@@ -1,0 +1,34 @@
+# =========================
+# 🐍 Python & バックエンド関連
+# =========================
+__pycache__/
+*.py[cod]
+venv/
+.venv/
+.env
+
+# 🤖 AIモデル＆音声＆DB（超重量級ファイル絶対阻止の壁！）
+*.gguf
+*.onnx
+*.onnx.json
+mutsuki_voice.wav
+inaba_memory/
+
+# =========================
+# 🎮 Unity & フロントエンド関連
+# =========================
+# Unityが勝手に作る重たい一時ファイルたち
+[Ll]ibrary/
+[Tt]emp/
+[Oo]bj/
+[Bb]uild/
+[Bb]uilds/
+[Ll]ogs/
+[Uu]ser
+[Ss]ettings/
+
+# =========================
+# 💻 OSが勝手に作る隠しゴミファイル
+# =========================
+.DS_Store
+Thumbs.db

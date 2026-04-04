@@ -14,8 +14,8 @@ app = FastAPI()
 
 # 📥 Unityから受け取るデータの形（名前も送れるようにしたで！）
 class ChatRequest(BaseModel):
-    username: str = "なっちゃん" 
-    text: str
+    user_name: str = "なっちゃん" 
+    user_text: str
 
 # ChromaDBの初期化
 client = chromadb.PersistentClient(path="./inaba_memory")
@@ -51,8 +51,8 @@ def background_memory_task(user_text, ai_text):
 
 # --- 音声生成関数（API用に改修：鳴らさずにパスだけ返す！） ---
 def generate_audio(text):
-    piper_exe = r"C:\ProjectInaba\piper\bin\piper.exe"
-    model_path = r"C:\ProjectInaba\piper\tsukuyomi-chan-6lang-fp16.onnx"
+    piper_exe = r"C:\MY_GIT_PROJECTS\ProjectInaba\Inaba_Backend\piper\bin\piper.exe"
+    model_path = r"C:\MY_GIT_PROJECTS\ProjectInaba\Inaba_Backend\piper\tsukuyomi-chan-6lang-fp16.onnx"
     
     current_dir = os.path.dirname(os.path.abspath(__file__))
     output_wav = os.path.join(current_dir, "mutsuki_voice.wav")
@@ -87,8 +87,8 @@ def generate_audio(text):
 # --- 🚀 APIエンドポイント（Unityからの通信受け口） ---
 @app.post("/api/chat")
 def chat_endpoint(request: ChatRequest, background_tasks: BackgroundTasks):
-    user_input = request.text
-    username = request.username
+    user_input = request.user_text  # ← ここを user_text に！
+    username = request.user_name    # ← ここを user_name に！
     print(f"\n📩 Unityからの通信を受信 [{username}]: {user_input}")
 
     # 1. 過去の記憶を検索
@@ -131,6 +131,6 @@ def chat_endpoint(request: ChatRequest, background_tasks: BackgroundTasks):
 
     # 6. Unityへ結果を返却！
     return {
-        "reply": clean_text,
-        "audio_path": audio_path
+        "ai_text": clean_text,
+        "audio_url": audio_path
     }

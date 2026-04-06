@@ -14,6 +14,8 @@ public class ApiManager : MonoBehaviour
     [SerializeField] private TMP_InputField chatInputField; // ★追加：なっちゃんの文字入力欄！
     [SerializeField] private TextMeshProUGUI aiReplyText;   // ムツキちゃんの返答を表示するテキスト
     [SerializeField] private AudioSource audioSource;       // 音声を鳴らすスピーカー
+    [SerializeField] private TMP_InputField userNameField;
+    public LogManager logManager;
 
     [Serializable]
     public class ChatRequest
@@ -36,28 +38,33 @@ public class ApiManager : MonoBehaviour
     {
         // ★ここでInputFieldの中身を直接引っこ抜く！
         string inputText = chatInputField.text;
+        string userName = userNameField.text;
 
         // 空っぽなら何もしない
         if (string.IsNullOrEmpty(inputText)) return;
 
         // 通信中は「考え中...」って出しておくと親切やね！
         aiReplyText.text = "考え中なのだ...";
+
+        logManager.AddLog(PlayerPrefs.GetString("UserName", "ユーザー"), chatInputField.text);//ログに追記！
         
         // ★送信した瞬間に入力欄を空にしてあげる（連続送信しやすいように！）
         chatInputField.text = "";
 
+        
+
         // コルーチン（非同期処理）をスタート！
-        StartCoroutine(CommunicateWithPython(inputText));
+        StartCoroutine(CommunicateWithPython(inputText, userName));
     }
 
     // ==========================================
     // ✈️ 実際の通信処理（コルーチン）
     // ==========================================
-    private IEnumerator CommunicateWithPython(string inputText)
+    private IEnumerator CommunicateWithPython(string inputText, string userName)
     {
         ChatRequest requestData = new ChatRequest
         {
-            user_name = "なつき", 
+            user_name = userName,
             user_text = inputText
         };
         string jsonToSend = JsonUtility.ToJson(requestData);
@@ -82,6 +89,8 @@ public class ApiManager : MonoBehaviour
                 ChatResponse responseData = JsonUtility.FromJson<ChatResponse>(responseJson);
 
                 aiReplyText.text = responseData.ai_text;
+
+                logManager.AddLog("因幡ムツキ", aiReplyText.text);//ログに追記！
 
                 if (!string.IsNullOrEmpty(responseData.audio_url))
                 {

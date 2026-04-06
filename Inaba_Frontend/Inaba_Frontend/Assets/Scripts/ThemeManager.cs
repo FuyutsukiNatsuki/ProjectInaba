@@ -22,6 +22,7 @@ public class ThemeManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        currentThemeID = PlayerPrefs.GetInt("Theme", 0);
         if (currentThemeID == 0){
             ThemeSet0();
         }else if(currentThemeID == 1)
@@ -101,6 +102,8 @@ public class ThemeManager : MonoBehaviour
         {
             WhiteBaseTexts[i].color = new Color32(255,255,255,255); //色指定
         }
+        PlayerPrefs.SetInt("Theme",currentThemeID);
+        PlayerPrefs.Save(); // 忘れずにセーブ！
     }
 
     public void ThemeSet1() //白系
@@ -146,6 +149,8 @@ public class ThemeManager : MonoBehaviour
         {
             WhiteBaseTexts[i].color = new Color32(0,0,0,255); //色指定
         }
+        PlayerPrefs.SetInt("Theme",currentThemeID);
+        PlayerPrefs.Save(); // 忘れずにセーブ！
     }
 
     public void ThemeSet2() //パステルブルー
@@ -191,6 +196,8 @@ public class ThemeManager : MonoBehaviour
         {
             WhiteBaseTexts[i].color = new Color32(0,0,0,255); //色指定
         }
+        PlayerPrefs.SetInt("Theme",currentThemeID);
+        PlayerPrefs.Save(); // 忘れずにセーブ！
     }
 
         public void ThemeSet3() //ライラック
@@ -236,6 +243,8 @@ public class ThemeManager : MonoBehaviour
         {
             WhiteBaseTexts[i].color = new Color32(0,0,0,255); //色指定
         }
+        PlayerPrefs.SetInt("Theme",currentThemeID);
+        PlayerPrefs.Save(); // 忘れずにセーブ！
     }
 
         public void ThemeSet4() //パステルグリーン
@@ -281,6 +290,8 @@ public class ThemeManager : MonoBehaviour
         {
             WhiteBaseTexts[i].color = new Color32(0,0,0,255); //色指定
         }
+        PlayerPrefs.SetInt("Theme",currentThemeID);
+        PlayerPrefs.Save(); // 忘れずにセーブ！
     }
 
         public void ThemeSet5() //ディープオーシャン
@@ -326,6 +337,8 @@ public class ThemeManager : MonoBehaviour
         {
             WhiteBaseTexts[i].color = new Color32(255,255,255,255); //色指定
         }
+        PlayerPrefs.SetInt("Theme",currentThemeID);
+        PlayerPrefs.Save(); // 忘れずにセーブ！
     }
 
         public void ThemeSet6() //グレープ
@@ -371,6 +384,8 @@ public class ThemeManager : MonoBehaviour
         {
             WhiteBaseTexts[i].color = new Color32(255,255,255,255); //色指定
         }
+        PlayerPrefs.SetInt("Theme",currentThemeID);
+        PlayerPrefs.Save(); // 忘れずにセーブ！
     }
 
         public void ThemeSet7() //ワインレッド
@@ -416,6 +431,8 @@ public class ThemeManager : MonoBehaviour
         {
             WhiteBaseTexts[i].color = new Color32(255,255,255,255); //色指定
         }
+        PlayerPrefs.SetInt("Theme",currentThemeID);
+        PlayerPrefs.Save(); // 忘れずにセーブ！
     }
 
         public void ThemeSet8() //抹茶グリーン
@@ -461,6 +478,8 @@ public class ThemeManager : MonoBehaviour
         {
             WhiteBaseTexts[i].color = new Color32(255,255,255,255); //色指定
         }
+        PlayerPrefs.SetInt("Theme",currentThemeID);
+        PlayerPrefs.Save(); // 忘れずにセーブ！
     }
 
         public void ThemeSet9() //レモン
@@ -506,6 +525,8 @@ public class ThemeManager : MonoBehaviour
         {
             WhiteBaseTexts[i].color = new Color32(255,255,255,255); //色指定
         }
+        PlayerPrefs.SetInt("Theme",currentThemeID);
+        PlayerPrefs.Save(); // 忘れずにセーブ！
     }
 
 

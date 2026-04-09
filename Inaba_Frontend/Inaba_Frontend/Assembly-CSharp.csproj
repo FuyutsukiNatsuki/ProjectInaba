@@ -64,6 +64,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\ThemeManager.cs" />
+    <Compile Include="Assets\Scripts\LogManager.cs" />
     <Compile Include="Assets\Scripts\ApiManager.cs" />
     <Compile Include="Assets\Scripts\TransparentWindow.cs" />
     <Compile Include="Assets\Scripts\MenuManager.cs" />

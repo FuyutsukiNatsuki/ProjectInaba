@@ -1,0 +1,1 @@
+py -m uvicorn Inaba_Server:app --reload

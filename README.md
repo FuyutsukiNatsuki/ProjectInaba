@@ -32,3 +32,6 @@ Unityによる透過ウィンドウUIと、PythonによるローカルLLMサー�
 * 権利関係の都合上、本リポジトリにはAIモデルファイル本体やPythonのライブラリ等は付属していません。。UIの枠組みとシステムのソースコードのみの提供となりますので、ご自身で各種ライブラリ、モデルファイル等をご用意してご利用ください。
 * ご自身の環境に合わせて、適宜コードを改変して自由にお楽しみください。
 * 私自身初めての公開プロジェクトですので、なにとぞお手柔らかにお願いします...
+* 本ソフトでは表示フォントに「KHドットフォント」(http://jikasei.me/font/kh-dotfont/) を使用しています。
+Licensed under SIL Open Font License 1.1 (http://scripts.sil.org/OFL)
+© Keitarou Hiraki, Font Silo 1990-2015.
